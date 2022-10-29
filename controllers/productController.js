@@ -52,8 +52,8 @@ exports.getAllProduct = async (req, res) => {
         .status(200)
         .send({ message: "product get successfully", data: queryProduct });
     }
-
-    const allProduct = await Products.findAll();
+    console.log("hiiii");
+    const allProduct = await Products.findAll({});
     return res
       .status(200)
       .send({ message: "all product get successfully", data: allProduct });
@@ -61,6 +61,7 @@ exports.getAllProduct = async (req, res) => {
     return res.status(500).send({ status: false, message: err.message });
   }
 };
+
 
 //GET product BY id
 exports.getOneProduct = async (req, res) => {
@@ -104,7 +105,7 @@ exports.updateProduct = async (req, res) => {
 //delete product BY id
 exports.deleteProduct = async (req, res) => {
   try {
-    const deletedProduct = await User.destroy({ where: { id: req.params.id } });
+    const deletedProduct = await Products.destroy({ where: { id: req.params.id } });
     if (!deletedProduct) {
       return res
         .status(400)

@@ -39,7 +39,7 @@ db.order_user_maps = require('./order_user_map')(sequelize, DataTypes)
 
 
 //one to many user AND product
-     db.users.hasMany(db.products)
+     //db.users.hasMany(db.products)
      //db.products.belongsTo(db.users)
      db.users.belongsToMany(db.products,{through:'carts',foreignKey:'userId'})
      db.products.belongsToMany(db.users,{through:'carts',foreignKey:'productId'})
